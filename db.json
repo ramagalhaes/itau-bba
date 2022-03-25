@@ -1,0 +1,52 @@
+{
+  "business": [
+    {
+      "cep": "04538-132",
+      "streetName": "Avenida Brigadeiro Faria Lima",
+      "neighborhood": "Itaim Bibi",
+      "state": "SP",
+      "city": "São Paulo",
+      "name": "Itaú BBA",
+      "business": "Financial Center",
+      "valuation": 2200000000.8,
+      "cnpj": "98.765.432/0001-80",
+      "active": true,
+      "id": 1
+    },
+    {
+      "cep": "71805-718",
+      "streetName": "QN 7 Conjunto 18",
+      "neighborhood": "Riacho Fundo I",
+      "state": "DF",
+      "city": "Brasília",
+      "name": "Itaú Ceic",
+      "business": "Centro Empresarial Itaú",
+      "valuation": 5400000045,
+      "cnpj": "45.236.254/00001-98",
+      "active": true,
+      "id": 2
+    },
+    {
+      "cep": "71805-718",
+      "streetName": "QN 7 Conjunto 18",
+      "neighborhood": "Riacho Fundo I",
+      "state": "DF",
+      "city": "Brasília",
+      "name": "Cubo Itaú",
+      "business": "Financial Center",
+      "valuation": 2200000000.22,
+      "cnpj": "98.765.432/0001-80",
+      "active": true,
+      "id": 3
+    },
+    {
+      "name": "Itaú Disabled",
+      "business": "Polo Fake",
+      "valuation": 0,
+      "active": false,
+      "id": 4,
+      "cnpj": "1.345.678/0001-01",
+      "cep": "71805-718"
+    }
+  ]
+}

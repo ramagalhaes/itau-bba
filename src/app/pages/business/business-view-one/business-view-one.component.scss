@@ -1,0 +1,38 @@
+.title {
+    margin-top: 40px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 80px;
+}
+
+.form-topic {
+    margin-bottom: 30px;
+}
+
+.topic-fields-container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.business {
+    width: 1180px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.btn-container {
+    width: 270px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 20px;
+}
+
+input, .select {
+    font-weight: 200;
+    font-size: 18px;
+}

@@ -1,0 +1,57 @@
+<main class="container">
+    <div class="title">
+        <h1>Polos Itaú</h1>
+        <h3>{{'BUSINESS_DESCRIPTION' | translate}}</h3> 
+    </div>
+
+    <div class="search-bar">
+        <mat-form-field appearance="outline" floatLabel="never">
+            <mat-label>{{"SEARCH" | translate}}</mat-label>
+            <input matInput (input)="filterTable($event.target)">
+          </mat-form-field>
+    </div>
+    <div class="table-container">
+    <table
+        mat-table
+        matSort
+        #tabela
+        [dataSource]="dataSource"
+    > 
+        <ng-container *ngFor="let column of columns" [matColumnDef]="column.title">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header >{{(column.title.toUpperCase()) | translate}}</th>
+            <td mat-cell *matCellDef="let row" [ngSwitch]="column.type">
+                <span *ngSwitchCase="'string'">{{row[column.value]}}</span>
+                <!-- Colocar o pipe currency -->
+                <span *ngSwitchCase="'number'">{{row[column.value] | currency: 'USD'}} </span>
+                <span *ngSwitchCase="'boolean'">
+                    <div class="activity-indicator" [ngClass]="{'active': row[column.value] === true}"></div>
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- Colunas que vão renderizar os botões da tabela -->
+        <ng-container *ngFor="let button of buttons" [matColumnDef]="button.title">
+            <th mat-header-cell *matHeaderCellDef class="table-btn-cell">{{(button.title.toUpperCase()) | translate}}</th>
+            <td 
+                mat-cell
+                *matCellDef="let row"
+                (click)="button.callback(row)"
+                class="icon"
+            > 
+            <mat-icon aria-hidden="false" aria-label="Edit icon" class="material-icons-outlined icon" >{{button.icon}}</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+
+    </table>
+
+        <mat-paginator
+        [pageSizeOptions]="[ 5, 10, 20]"
+        showFirstLastButtons 
+        aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+    </div>    
+</main>

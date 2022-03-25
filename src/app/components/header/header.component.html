@@ -1,0 +1,18 @@
+<header class="full-width">
+    <section class="container grid">
+        <a [routerLink]="'/business'" >
+            <img src="../../../assets/images/logo-itau-bba.svg" alt="Logo Itaú" class="logo" >
+        </a>    
+        <nav>
+            <p class="language" (click)="changeLanguage()">{{selectedLanguage}}</p>
+            <div class="user-info">
+                <img src="../../../assets/images/user-avatar.jpg" alt="Avatar">
+                <div>
+                    <p class="username">John Doe</p>
+                    <p class="position">{{"DIRECTOR" | translate}}</p>
+                </div>
+                <p class="chevron">></p>
+            </div>
+        </nav>
+    </section>
+</header>

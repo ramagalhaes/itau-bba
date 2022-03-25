@@ -1,0 +1,66 @@
+<main class="container">
+    <div class="title">
+        <h1>Polo {{business.name}}</h1>
+        <h3> {{"BUSINESS_VIEW_ONE_DESCRIPTION" | translate }}{{business.name}}#{{business.id}}</h3> 
+    </div>
+    <form class="form-grid" [formGroup]="form">
+        <section class="form-topic">
+            <h4>{{"ADDRESS_DETAILS" | translate}}</h4>
+            <div class="topic-fields-container">
+                <app-cep
+                    [formGroup]="form"
+                    [controlName]="'cep'"
+                    (cepEvent)="updateAddressFields($event)"
+                ></app-cep>
+                <mat-form-field appearance="outline" floatLabel="never">
+                    <mat-label>{{"STREETNAME" | translate}}</mat-label>
+                    <input matInput [formControlName]="'streetName'">
+                </mat-form-field>
+                <mat-form-field appearance="outline" floatLabel="never">
+                    <mat-label>{{"DISTRICT"}}</mat-label>
+                    <input matInput [formControlName]="'neighborhood'">
+                </mat-form-field>
+                <mat-form-field appearance="outline" floatLabel="never">
+                    <mat-label>{{"STATE"}}</mat-label>
+                    <input matInput [formControlName]="'state'">
+                </mat-form-field>
+                <mat-form-field appearance="outline" floatLabel="never">
+                    <mat-label>{{"CITY" | translate}}</mat-label>
+                    <input matInput [formControlName]="'city'">
+                </mat-form-field>
+            </div>
+        </section>
+        <section class="form-topic">
+            <h4>{{"BUSINESS_DETAILS" | translate}}</h4>
+            <div class="topic-fields-container business">
+                <mat-form-field appearance="outline" floatLabel="never">
+                    <mat-label>{{"NAME" | translate}}</mat-label>
+                    <input matInput [formControlName]="'name'">
+                </mat-form-field>
+                <mat-form-field appearance="outline" floatLabel="never">
+                    <mat-label>{{"BUSINESS" | translate}}</mat-label>
+                    <input matInput [formControlName]="'business'">
+                </mat-form-field>
+                <mat-form-field appearance="outline" floatLabel="never">
+                    <mat-label>{{"VALUATION" | translate}}</mat-label>
+                    <input matInput [formControlName]="'valuation'">
+                </mat-form-field>
+                <mat-form-field appearance="outline" floatLabel="never">
+                    <mat-label >CNPJ</mat-label>
+                    <input appCnpjMask matInput [formControlName]="'cnpj'" >
+                </mat-form-field>
+                <mat-form-field appearance="outline" floatLabel="never">
+                    <mat-label>{{"ACTIVE" | translate}}?</mat-label>
+                    <mat-select [formControlName]="'active'" >
+                        <mat-option [value]="true">{{"YES" | translate}}</mat-option>
+                        <mat-option [value]="false">{{"NO" | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </section>
+    </form>
+    <div class="btn-container">
+        <button mat-flat-button class="secondary-btn" [routerLink]="'/business'">{{"RETURN" | translate}}</button>
+        <button mat-flat-button class="primary-btn" (click)="updateBusiness()" >{{"SAVE" | translate}}</button>
+    </div>
+</main>

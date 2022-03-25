@@ -1,0 +1,67 @@
+@import "../../../styles/colors.scss";
+
+.full-width {
+    background-color: $terciaryColor;
+    border-bottom: solid 3px $secondaryColor;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    height: 120px;
+    align-items: center;
+
+    a {
+        width: 120px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    align-items: center;
+}
+
+.language {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.user-info {
+    display: grid;
+    height: 60px;
+    align-items: center;
+    grid-template-columns: 50px 120px auto;
+    border-left: 1px solid #000;
+    padding-left: 30px;
+
+    div{
+        margin-left: 10px;
+    }
+
+    .username {
+        font-size: 14px;
+        font-weight: bold;
+        font-family:  'Ibm Plex mono';
+    }
+
+    .position {
+        font-size: 14px;
+        font-weight: 300;
+        color: rgba($color: #000000, $alpha: 0.7);
+    }
+
+    img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+    }
+
+    .chevron {
+        transform: rotate(90deg);
+    }
+}
