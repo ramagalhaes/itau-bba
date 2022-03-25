@@ -28,7 +28,6 @@ export class BusinessService {
   }
 
   public updateById(id: number, body: IBusiness): Observable<any> {
-    console.log(id)
     return this.http.put<any>(`${this.BUSINESS_URL}/${id}`, body).pipe(retry(3), catchError(this.handleError));
   }
 }

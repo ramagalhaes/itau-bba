@@ -33,6 +33,7 @@ export class BusinessComponent implements OnInit, OnDestroy, AfterViewInit {
   private unsubscriptions: Subscription[]= [];
   public dataSource: MatTableDataSource<IBusiness> = new MatTableDataSource();
   public columnsLoaded: boolean = false;
+  public currency: string = '';
   public columns: IColumn[] = [
     { title: 'Name', value: 'name', type: 'string' },
     { title: 'Business', value: 'business', type: 'string' },
@@ -57,6 +58,7 @@ export class BusinessComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.getAllBusiness();
     this.loadButtons();
+    this.setCurrency();
   }
 
   ngAfterViewInit(): void {
@@ -90,6 +92,11 @@ export class BusinessComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public filterTable(event: any): void {
     this.dataSource.filter = event.value.toLowerCase();
+  }
+
+  private setCurrency(): void {
+    const currentLang = this.translateService.currentLang;
+    this.currency = currentLang === 'pt-br' ? 'BRL' : 'USD'
   }
 
 }

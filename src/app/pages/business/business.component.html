@@ -22,7 +22,7 @@
             <td mat-cell *matCellDef="let row" [ngSwitch]="column.type">
                 <span *ngSwitchCase="'string'">{{row[column.value]}}</span>
                 <!-- Colocar o pipe currency -->
-                <span *ngSwitchCase="'number'">{{row[column.value] | currency: 'USD'}} </span>
+                <span *ngSwitchCase="'number'">{{row[column.value] | currency: currency}} </span>
                 <span *ngSwitchCase="'boolean'">
                     <div class="activity-indicator" [ngClass]="{'active': row[column.value] === true}"></div>
                 </span>

@@ -1,7 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { BusinessService } from 'src/app/services/business.service';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
@@ -50,7 +50,8 @@ export class BusinessViewOneComponent implements OnInit {
     private route: ActivatedRoute,
     private snackBarService: SnackBarService,
     private currencyPipe: CurrencyPipe,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private router: Router
    ) { }
 
   ngOnInit(): void {
@@ -91,10 +92,12 @@ export class BusinessViewOneComponent implements OnInit {
   public updateBusiness(): void {
     // Remove caracteres indesejados para salvar a valuation como um numero
     let formBody = this.form.value;
-    formBody['valuation'] = Number(formBody['valuation'].slice(2).split(',').join(''));
+    let currencyLetters = this.translateService.currentLang === 'pt-br' ? 2 : 1;
+    formBody['valuation'] = Number(formBody['valuation'].slice(currencyLetters).split(',').join(''));
     setTimeout(() => {
       this.businessService.updateById(this.business.id, this.form.value).subscribe((response) => {
         this.snackBarService.openSnackbar(this.translateService.instant('UPDATE_SUCCESS'), 'sucess', 3000);
+        this.router.navigate(['/business']);
       }, (error) => {
         this.snackBarService.openSnackbar(this.translateService.instant("HTTP_STANDARD_ERROR"), 'error', 3000);
       })
